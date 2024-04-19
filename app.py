@@ -32,6 +32,7 @@ def exibir_subtitulo(texto):
     print(linha)
     print()
     
+
 def cadastrar_novo_restaurante():
     exibir_subtitulo('Digite o novos restaurantes:')
     categoria = input('Digite a categoria do restaurante{nome_do_restaurante:} ')
@@ -42,9 +43,31 @@ def cadastrar_novo_restaurante():
     print(f'O restaurante {nome_do_restaurante}foi cadastrado com sucesso!')
     voltar_ao_menu_principal()
     
+
 def listar_restaurante():
     exibir_subtitulo('Listando os restaurantes')
-    
+
+
+def alternar_estado_restaurante():
+    exibir_subtitulo('Alternando estado do restaurante')
+    nome_restaurante = input('Digite estado do restaurante')
+    nome_restaurante = input('Digitr o nome do restaurante que deseja alterar o estdo:')
+    restaurante_encontrado = False
+
+
+    for restaurante in restaurantes:
+        if nome_restaurante == restaurante['nome']:
+            restaurante_encontrado = True
+            restaurante['ativo'] = not restaurante['nome']
+            mensagem = f'Orestaurante {nome_restaurante}foi ativado com sucesso'if restaurante['ativo']else f'o restaurante {nome_restaurante}foi desativado com sucesso' 
+            print(mensagem)
+
+    if not restaurante_encontrado:
+        print('O restaurante não foi encontrado')
+    voltar_ao_menu_principal()
+
+
+
     print(f'{"nome do restaurante".ljust(22)}  |  {"categoria"ljust(22)  |  status}'  )
     for restaurante in restaurantes:
         nome_restaurante =['no,e']
@@ -80,6 +103,7 @@ def cadastro_novo_restaurante():
     
 def escolher_opcao():
  try:
+    
 
     opcao_escolhida = int(input('Escolha uma opção'))
 
